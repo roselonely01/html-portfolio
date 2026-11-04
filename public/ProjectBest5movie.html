@@ -1,27 +1,9 @@
-<h1>Best Movies According to Chris</h1>
-<h2>My Top 5 Movies</h2>
-<hr />
-<h3>1. LONE SURVIVOR (2015)</h3>
-<p>Based on a true story, this film follows the journey <br/>
-of a Navy SEAL team during a mission in Afghanistan.</p>
-<h3>2. THE TERMINAL LIST (2022)</h3>
-<p>A gripping action thriller that delves into the life<br/>
-     of a Navy SEAL who uncovers a conspiracy.</p>
-<h3>3. JACK REACHER (2012) & JACK REACHER: NEVER GO BACK (2016)</h3>
-<p>A pair of action-packed films featuring Tom Cruise as the titular character,<br/>
-     a former military police officer turned private investigator.</p>
-<h3>4. THE EQUALIZER (2014) & THE EQUALIZER 2 (2018)</h3>
-<p>Denzel Washington stars in these action thrillers <br/>
-    as a retired intelligence officer<br/>
-</p>
-<h3>5. sherlock holmes (2009) & sherlock holmes: a game of shadows (2011)</h3>
-<p>Robert Downey Jr. and Jude Law bring<br/>
-     the iconic detective duo to life in these<br/><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Best 5 Movies | Som Chris</title>
+  <title>Best 5 Movies | Jakree Pitpeng</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -44,4 +26,222 @@ of a Navy SEAL team during a mission in Afghanistan.</p>
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      min-heigh...
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -20%;
+      left: -10%;
+      width: 50%;
+      height: 50%;
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .navbar {
+      padding: 1rem 0;
+      background: rgba(11, 15, 25, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    .logo span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .back-link {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--accent); }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .page-header .label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-header p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .movie-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .movie-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.25rem;
+      transition: all 0.25s;
+    }
+
+    .movie-card:hover {
+      border-color: rgba(34, 211, 238, 0.3);
+      transform: translateX(4px);
+    }
+
+    .movie-rank {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .movie-content h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      line-height: 1.35;
+    }
+
+    .movie-content p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">Jakree<span>.</span></a>
+      <a href="../index.html" class="back-link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Portfolio
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <span class="label">Project</span>
+      <h1>Best Movies According to Chris</h1>
+      <p>My personal top 5 favorite movies</p>
+    </div>
+
+    <div class="movie-list">
+      <article class="movie-card">
+        <div class="movie-rank">1</div>
+        <div class="movie-content">
+          <h3>Lone Survivor (2015)</h3>
+          <p>Based on a true story, this film follows the journey of a Navy SEAL team during a mission in Afghanistan.</p>
+        </div>
+      </article>
+
+      <article class="movie-card">
+        <div class="movie-rank">2</div>
+        <div class="movie-content">
+          <h3>The Terminal List (2022)</h3>
+          <p>A gripping action thriller that delves into the life of a Navy SEAL who uncovers a conspiracy.</p>
+        </div>
+      </article>
+
+      <article class="movie-card">
+        <div class="movie-rank">3</div>
+        <div class="movie-content">
+          <h3>Jack Reacher (2012) &amp; Jack Reacher: Never Go Back (2016)</h3>
+          <p>A pair of action-packed films featuring Tom Cruise as the titular character, a former military police officer turned private investigator.</p>
+        </div>
+      </article>
+
+      <article class="movie-card">
+        <div class="movie-rank">4</div>
+        <div class="movie-content">
+          <h3>The Equalizer (2014) &amp; The Equalizer 2 (2018)</h3>
+          <p>Denzel Washington stars in these action thrillers as a retired intelligence officer.</p>
+        </div>
+      </article>
+
+      <article class="movie-card">
+        <div class="movie-rank">5</div>
+        <div class="movie-content">
+          <h3>Sherlock Holmes (2009) &amp; Sherlock Holmes: A Game of Shadows (2011)</h3>
+          <p>Robert Downey Jr. and Jude Law bring the iconic detective duo to life in these films.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Jakree Pitpeng</p>
+  </footer>
+</body>
+</html>
