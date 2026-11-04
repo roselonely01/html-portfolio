@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Best 5 Movies | Som Chris</title>
+  <title>Jakree Pitpeng | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -11,19 +11,409 @@
     :root {
       --bg: #0b0f19;
       --bg-card: #121826;
+      --bg-card-hover: #1a2234;
       --text: #e8edf5;
       --text-muted: #94a3b8;
       --accent: #22d3ee;
       --accent-soft: rgba(34, 211, 238, 0.15);
       --border: rgba(148, 163, 184, 0.12);
       --gradient: linear-gradient(135deg, #22d3ee 0%, #818cf8 100%);
+      --shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      min-heigh...
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: -20%; left: -10%;
+      width: 50%; height: 50%;
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -20%; right: -10%;
+      width: 45%; height: 45%;
+      background: radial-gradient(circle, rgba(129, 140, 248, 0.07) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    a { color: inherit; text-decoration: none; }
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 0;
+      background: rgba(11, 15, 25, 0.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-container {
+      max-width: 1100px; margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em;
+    }
+    .logo span {
+      background: var(--gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.9rem; font-weight: 500; color: var(--text-muted);
+      transition: color 0.2s; position: relative;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: var(--accent); transition: width 0.25s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .menu-toggle {
+      display: none; background: none; border: none; color: var(--text);
+      cursor: pointer; padding: 0.25rem;
+    }
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; z-index: 1; padding: 6rem 1.5rem 4rem;
+    }
+    .hero-content { max-width: 1100px; margin: 0 auto; width: 100%; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--accent-soft); color: var(--accent);
+      font-size: 0.85rem; font-weight: 500; padding: 0.4rem 0.9rem;
+      border-radius: 999px; margin-bottom: 1.5rem;
+      border: 1px solid rgba(34, 211, 238, 0.25);
+    }
+    .hero-badge::before {
+      content: ''; width: 8px; height: 8px; background: var(--accent);
+      border-radius: 50%; animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700;
+      line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1rem;
+    }
+    .hero h1 .highlight {
+      background: var(--gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: 1.25rem; color: var(--text-muted);
+      max-width: 560px; margin-bottom: 2.5rem; font-weight: 400;
+    }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 1.6rem; border-radius: 10px;
+      font-weight: 600; font-size: 0.95rem; transition: all 0.25s;
+      cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: var(--gradient); color: #0b0f19;
+      box-shadow: 0 8px 24px -6px rgba(34, 211, 238, 0.4);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -6px rgba(34, 211, 238, 0.5);
+    }
+    .btn-outline {
+      background: transparent; color: var(--text); border: 1px solid var(--border);
+    }
+    .btn-outline:hover { background: var(--bg-card); border-color: var(--text-muted); }
+    section { position: relative; z-index: 1; padding: 5rem 1.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-header { margin-bottom: 3rem; }
+    .section-label {
+      display: inline-block; font-size: 0.8rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 700; letter-spacing: -0.02em;
+    }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+    }
+    .about-text p { color: var(--text-muted); margin-bottom: 1.25rem; font-size: 1.05rem; }
+    .skills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+    .skill-tag {
+      background: var(--bg-card); border: 1px solid var(--border);
+      padding: 0.4rem 0.9rem; border-radius: 8px; font-size: 0.85rem;
+      font-weight: 500; color: var(--text-muted); transition: all 0.2s;
+    }
+    .skill-tag:hover {
+      border-color: var(--accent); color: var(--accent); background: var(--accent-soft);
+    }
+    .about-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem; box-shadow: var(--shadow);
+    }
+    .about-card h3 {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; margin-bottom: 1rem;
+    }
+    .info-list { list-style: none; }
+    .info-list li {
+      display: flex; justify-content: space-between; padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border); font-size: 0.95rem; gap: 1rem;
+    }
+    .info-list li:last-child { border-bottom: none; }
+    .info-list .label { color: var(--text-muted); }
+    .info-list .value { font-weight: 500; text-align: right; }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.75rem;
+    }
+    .project-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex; flex-direction: column;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(34, 211, 238, 0.3);
+      box-shadow: 0 25px 50px -20px rgba(0, 0, 0, 0.6);
+      background: var(--bg-card-hover);
+    }
+    .project-image {
+      height: 180px; background: linear-gradient(145deg, #1e293b, #0f172a);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .project-image img {
+      width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s;
+    }
+    .project-card:hover .project-image img { transform: scale(1.05); }
+    .project-image .placeholder-icon { font-size: 3rem; opacity: 0.4; }
+    .project-body {
+      padding: 1.5rem; flex: 1; display: flex; flex-direction: column;
+    }
+    .project-body h3 {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem;
+      font-weight: 600; margin-bottom: 0.5rem;
+    }
+    .project-body p {
+      color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.25rem; flex: 1;
+    }
+    .project-tags { display: flex; gap: 0.5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .tag {
+      font-size: 0.75rem; font-weight: 500; padding: 0.25rem 0.6rem;
+      border-radius: 6px; background: var(--accent-soft); color: var(--accent);
+    }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.9rem; font-weight: 600; color: var(--accent); transition: gap 0.2s;
+    }
+    .project-link:hover { gap: 0.7rem; }
+    .contact-box {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 3rem; text-align: center;
+      max-width: 640px; margin: 0 auto; box-shadow: var(--shadow);
+    }
+    .contact-box h2 {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.75rem; margin-bottom: 0.75rem;
+    }
+    .contact-box p { color: var(--text-muted); margin-bottom: 2rem; }
+    .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    footer {
+      position: relative; z-index: 1; padding: 2rem 1.5rem;
+      border-top: 1px solid var(--border); text-align: center;
+      color: var(--text-muted); font-size: 0.9rem;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(11, 15, 25, 0.98); flex-direction: column;
+        padding: 1.5rem; gap: 1rem; border-bottom: 1px solid var(--border);
+      }
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: block; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero { padding-top: 7rem; min-height: auto; padding-bottom: 4rem; }
+      .contact-box { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">Jakree<span>.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">Available for work</div>
+      <h1>Hi, I'm <span class="highlight">Jakree Pitpeng</span></h1>
+      <p class="hero-subtitle">
+        A passionate web developer and Coating Technician. 
+        Currently learning Digital Business Technology and building websites with HTML, CSS &amp; JavaScript.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">
+          View Projects
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="public/contact.html" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">About Me</span>
+        <h2 class="section-title">Who I Am</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <div style="margin-bottom: 1.5rem;">
+            <img 
+              src="public/my%20photo/MY%20PHOTO.png" 
+              alt="Jakree Pitpeng"
+              style="width: 120px; height: 120px; border-radius: 16px; object-fit: cover; border: 3px solid rgba(34,211,238,0.3); box-shadow: 0 10px 25px -8px rgba(0,0,0,0.5);"
+              onerror="this.style.display='none'"
+            >
+          </div>
+          <p>
+            Hello! I'm <strong style="color: var(--text)">Jakree Pitpeng</strong>, a 29-year-old 
+            currently working as a Coating Technician at Diacoat Technologies.
+          </p>
+          <p>
+            I have 5–6 years of solid factory experience across several companies. 
+            At the same time, I'm pursuing a Higher Vocational Diploma in Digital Business Technology 
+            and plan to continue with a Bachelor's degree in Computer Science.
+          </p>
+          <p>
+            I love building clean websites and continuously improving my coding skills through real projects.
+          </p>
+          <div class="skills">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Responsive Design</span>
+            <span class="skill-tag">GitHub</span>
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <a href="public/ProjectWebpages.html" class="btn btn-outline" style="padding: 0.65rem 1.2rem; font-size: 0.875rem;">
+              More About Me →
+            </a>
+          </div>
+        </div>
+        <div class="about-card">
+          <h3>Quick Info</h3>
+          <ul class="info-list">
+            <li><span class="label">Name</span><span class="value">Jakree Pitpeng</span></li>
+            <li><span class="label">Age</span><span class="value">29 years old</span></li>
+            <li><span class="label">Job</span><span class="value">Coating Technician</span></li>
+            <li><span class="label">Company</span><span class="value">Diacoat Technologies</span></li>
+            <li><span class="label">Experience</span><span class="value">5–6 years</span></li>
+            <li><span class="label">Study</span><span class="value">Digital Business Tech</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Portfolio</span>
+        <h2 class="section-title">My Projects</h2>
+      </div>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-image">
+            <img src="images/Top best 5 movie.png" alt="Best 5 Movies Project" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'placeholder-icon\'>🎬</div>'">
+          </div>
+          <div class="project-body">
+            <h3>Best 5 Movies</h3>
+            <p>A personal ranking of my top 5 favorite movies with short descriptions. Built with pure HTML.</p>
+            <div class="project-tags"><span class="tag">HTML</span><span class="tag">Content</span></div>
+            <a href="public/ProjectBest5movie.html" class="project-link">
+              View Project
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-image">
+            <img src="images/This is my birthday.png" alt="My Birthday Project" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'placeholder-icon\'>🎂</div>'">
+          </div>
+          <div class="project-body">
+            <h3>My Birthday</h3>
+            <p>A fun birthday invitation page with date, wishlist, and location map link.</p>
+            <div class="project-tags"><span class="tag">HTML</span><span class="tag">Fun</span></div>
+            <a href="public/ProjectBirthday.html" class="project-link">
+              View Project
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <span class="section-label">Contact</span>
+        <h2>Let's work together</h2>
+        <p>Have a project in mind or just want to say hi? Feel free to reach out!</p>
+        <div class="contact-links">
+          <a href="public/contact.html" class="btn btn-primary">Contact Details</a>
+          <a href="mailto:jk.pitpeng@gmail.com" class="btn btn-outline">Send Email</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Jakree Pitpeng. Built with HTML &amp; CSS.</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.pageYOffset;
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
+        const id = section.getAttribute('id');
+        const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+        if (link) {
+          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) link.classList.add('active');
+          else link.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
