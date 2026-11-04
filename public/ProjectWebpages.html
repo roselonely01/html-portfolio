@@ -1,12 +1,324 @@
-<h1>Welcome to My Website!</h1>
-<img src="./my photo/MY PHOTO.png" width="200" alt="A cute cat"/></a>
-<hr />
-<h4>About Me</h4>
-<p>My name is Jakree pitpeng, a 29 year-old.<br/>
- I'm currently a coating Technician at Diacoat tecnologies Throughout my career,<br/>
- I have accumulated 5 to 6 years of solid factory experience.<br/>
- working with 3 to 4 different companies. For my education,<br/>
- I am pursuing a Higher Vocational Diploma in Digital Business Technology<br/>
- and plan to continue with a Bachelor's degree in Computer Science.<br/>
-</p>
-<a href="../public/contact.html">Contact Me</a><!-- Add a link to your contact me page here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me | Jakree Pitpeng</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --bg-card: #121826;
+      --text: #e8edf5;
+      --text-muted: #94a3b8;
+      --accent: #22d3ee;
+      --accent-soft: rgba(34, 211, 238, 0.15);
+      --border: rgba(148, 163, 184, 0.12);
+      --gradient: linear-gradient(135deg, #22d3ee 0%, #818cf8 100%);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: -20%;
+      left: -10%;
+      width: 50%;
+      height: 50%;
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .navbar {
+      padding: 1rem 0;
+      background: rgba(11, 15, 25, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    .logo span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .back-link {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--accent); }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .profile-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 3px solid rgba(34, 211, 238, 0.3);
+      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+      background: var(--bg-card);
+    }
+
+    .profile-info .label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .profile-info h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+
+    .profile-info .role {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .card h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 560px) {
+      .info-grid { grid-template-columns: 1fr; }
+      .profile-header { flex-direction: column; text-align: center; }
+    }
+
+    .info-item {
+      background: rgba(255,255,255,0.03);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .info-item .label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .info-item .value {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.4rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.25s;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: #0b0f19;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px -6px rgba(34, 211, 238, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-card);
+      border-color: var(--text-muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">Jakree<span>.</span></a>
+      <a href="../index.html" class="back-link">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Portfolio
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="profile-header">
+      <img 
+        class="profile-photo" 
+        src="/public/MY PHOTO.png" 
+        alt="Jakree Pitpeng"
+        onerror="this.onerror=null; this.src='/public/MY PHOTO.png';"
+      >
+      <div class="profile-info">
+        <span class="label">About Me</span>
+        <h1>Jakree Pitpeng</h1>
+        <p class="role">Web Developer & Coating Technician</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>👋 Hello</h2>
+      <p>
+        My name is <strong style="color: var(--text)">Jakree Pitpeng</strong>, a 29-year-old.
+        I'm currently a Coating Technician at Diacoat Technologies.
+      </p>
+      <p>
+        Throughout my career, I have accumulated 5 to 6 years of solid factory experience,
+        working with 3 to 4 different companies.
+      </p>
+      <p>
+        For my education, I am pursuing a Higher Vocational Diploma in Digital Business Technology
+        and plan to continue with a Bachelor's degree in Computer Science.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>📋 Quick Info</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="label">Full Name</div>
+          <div class="value">Jakree Pitpeng</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Age</div>
+          <div class="value">29 years old</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Current Job</div>
+          <div class="value">Coating Technician</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Company</div>
+          <div class="value">Diacoat Technologies</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Experience</div>
+          <div class="value">5–6 years (Factory)</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Education</div>
+          <div class="value">Digital Business Technology</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <a href="contact.html" class="btn btn-primary">Contact Me</a>
+      <a href="../index.html" class="btn btn-outline">Back to Home</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Jakree Pitpeng</p>
+  </footer>
+</body>
+</html>
